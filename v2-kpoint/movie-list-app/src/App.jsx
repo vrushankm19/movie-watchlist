@@ -1,30 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import TmdbHead from './components/TmdbHead';
-import TmdbBody from './components/TmdbBody';
-import data from './data';
+import React, { useState } from 'react';
+import MovieGenre from './components/MovieGenre/MovieGenre';
+import MovieList from './components/MovieList/MovieList';
 
-const App = () => {
-  const [items, setItems] = useState([]);
+const MovieContainer = () => {
+  const [selectedGenres, setSelectedGenres] = useState([]); 
 
-  useEffect(() => {
-    // Simulate fetching data
-    setItems(data[0].results);
-  }, []);
+  const handleGenreChange = (genreId) => {
+    if (genreId === 'all') {
+      setSelectedGenres([]); 
+    } else {
+      setSelectedGenres(prevGenres =>
+        prevGenres.includes(genreId)
+          ? prevGenres.filter(id => id !== genreId)
+          : [...prevGenres, genreId]
+      );
+    }
+  };
 
   return (
     <div>
-      <TmdbHead />
-      <TmdbBody items={items} />
-      {/* <ul>
-        {items.map(item => (
-          <li key={item.id}>
-            <h2>{item.original_title}</h2>
-            <p>{item.release_date}</p>
-          </li>
-        ))}
-      </ul> */}
+      <MovieGenre selectedGenres={selectedGenres} onGenreChange={handleGenreChange} />
+      <MovieList selectedGenres={selectedGenres} />
     </div>
   );
-}
+};
 
-export default App;
+export default MovieContainer;
