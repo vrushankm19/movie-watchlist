@@ -1,0 +1,117 @@
+:root {
+  --primary-font: "Archivo", sans-serif;
+}
+
+body, html, * {
+  font-family: var(--primary-font);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: #121212;
+  color: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.tmdb-head{
+  background-color: #242424;
+  padding-block: 30px;
+  &-flex{
+    &-img{
+        width: 200px;
+    }
+  }
+  &-btn{
+    margin-top: 10px;
+    &-flex{
+        display: inline-flex;
+        gap: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px){
+    .tmdb-head{
+        &-btn{
+            overflow-y: hidden;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+    }
+}
+.btn-primary{
+    font-size: 14px;
+    font-weight: 400;
+    background-color: #484848;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    white-space: nowrap;
+    &:hover,
+    &.action{
+      background-color: #ef283b;
+    // color: #000;
+  }
+}
+
+.tmdb-body{
+    padding-block: 30px 0;
+    &-title{
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    &-flex{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+        &-item{
+            position: relative;
+            &::before{
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,0.7875525210084033) 0%, rgba(0,0,0,0) 42%, rgba(0,0,0,0.03125) 100%);
+                z-index: 1;
+            }
+            &-img{
+                width: 100%;
+            }
+            &-copy{
+                position: absolute;
+                z-index: 2;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                padding: 10px;
+                &-h3{
+                    font-size: 14px;
+                    font-weight: 600;
+                    margin-bottom: 5px;
+                }
+                &-p{
+                    font-size: 8px;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    .tmdb-body-flex{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

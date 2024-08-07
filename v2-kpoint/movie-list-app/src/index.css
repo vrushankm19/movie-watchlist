@@ -1,0 +1,29 @@
+:root {
+  --primary-font: "Archivo", sans-serif;
+}
+
+body, html, * {
+  font-family: var(--primary-font);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: #121212;
+  color: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.tmdb-head{
+  background-color: #242424;
+  padding-block: 20px;
+  &-flex{
+    &-img{}
+  }
+}
